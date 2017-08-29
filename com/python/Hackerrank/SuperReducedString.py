@@ -3,7 +3,7 @@ def super_reduced_string(s):
     ans = ''
     for i in range(0, len(s)):
         if s[i] in map and map[s[i]] != 0:
-            map[s[i]] = map[s[i]] - 1
+            del map[s[i]]
         else:
             map[s[i]] = 1
     for k,v in map.iteritems():
