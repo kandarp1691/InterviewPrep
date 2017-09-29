@@ -1,88 +1,106 @@
 class Node:
     def __init__(self, data):
         self.data = data
-        self.right = None
         self.left = None
+        self.right = None
 
-    def insert(self, data):
-        if self.data == data:
-            return False
-        else:
-            if self.data < data:
-                if self.right:
-                    return self.right.insert(data)
-                else:
-                    self.right = Node(data)
+# Method to insert a Node in the tree
+def insert(root, val):
+    if root is None:
+        root = Node(val)
+    else:
+        if root.data > val:
+            if root.left is None:
+                root.left = Node(val)
             else:
-                if self.left:
-                    return  self.left.insert(data)
-                else:
-                    self.left = Node(data)
-
-    def find(self, data):
-        if self.data == data:
-            return True
-        elif self.data < data:
-            if self.right:
-                return self.right.find(data)
+                insert(root.left, val)
+        else:
+            if root.right is None:
+                root.right = Node(val)
             else:
-                return False
+                insert(root.right, val)
+    return root
+
+#Method to search for a key in the tree
+def search(root, key):
+    if root is None:
+        return 'No tree exists'
+    if root.data == key:
+        return root
+    else:
+        if key < root.data:
+            return search(root.left, key)
         else:
-            if self.left:
-                return self.left.find(data)
-            else:
-                return False
+            return search(root.right, key)
 
-    def preorder(self):
-        if self:
-            print str(self.data)
-            if self.left:
-                self.left.preorder()
-            if self.right:
-                self.right.preorder()
+#Method to print the tree in Inorder Traversal fashion
+def inorder(root):
+    result = ''
+    if root is not None:
+        inorder(root.left)
+        print root.data
+        inorder(root.right)
+    return result
 
-    def postorder(self):
-        if self:
-            if self.left:
-                self.left.postorder()
-            if self.right:
-                self.right.postorder()
-            print str(self.data)
+#Method to find the minimum value of the Tree
+def min_value(root):
+    if root is None:
+        return root
+    while root.left is not None:
+        root = root.left
+    print root.data
 
-    def inorder(self):
-        if self:
-            if self.left:
-                self.left.inorder()
-            print str(self.data)
-            if self.right:
-                self.right.inorder()
+def delete_node(root, key):
+    if root is None:
+        return None
+
+    #If val to be deleted is less than root its in left subtree
+    if key < root.data:
+        root.left = delete_node(root.left, key)
+
+    #If val to be deleted is greater than root, its in right subtree
+    elif key > root.data:
+        root.right = delete_node(root.right, key)
+    else:
+        if root.left is None:
+            temp = root.right
+            root = None
+            return temp
+        elif root.right is None:
+            temp = root.left
+            root = None
+            return temp
+
+        temp = min_value(root.right)
+
+        root.data = temp.data
+
+        root.right = delete_node(root.right, temp.key)
+
+    return root
+
+def find_lca(root, n1, n2):
+    if root is None:
+        return root
+    if root.data > n1 and root.data > n2:
+        return find_lca(root.left, n1, n2)
+    if root.data < n1 and root.data < n2:
+        return find_lca(root.right, n1, n2)
+    return root
 
 
-class Tree:
-    def __init__(self):
-        self.root = None
 
-    def insert(self,data):
-        if self.root:
-            return self.root.insert(data)
-        else:
-            self.root = Node(data)
+root = None
+root = insert(root, 50)
+root = insert(root, 30)
+root = insert(root, 20)
+root = insert(root, 40)
+root = insert(root, 70)
+root = insert(root, 60)
+root = insert(root, 80)
 
-    def find(self, data):
-        if self.root:
-            return self.root.find(data)
-        else:
-            return False
+print 'Inorder Traversal Result is:'
+inorder(root)
 
-    def preorder(self):
-        print "Pre-Order"
-        self.root.preorder()
-
-    def postorder(self):
-        print 'Post-Order'
-        self.root.postorder()
-
-    def inorder(self):
-        print 'In-Order'
-        self.root.inorder()
-
+print 'Minimun value of the tree is'
+min_value(root)
