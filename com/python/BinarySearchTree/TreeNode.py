@@ -88,6 +88,45 @@ def find_lca(root, n1, n2):
         return find_lca(root.right, n1, n2)
     return root
 
+# Find the kth smallest node
+def kthsmallest(root, k):
+    if root is None:
+        return root
+    else:
+        node = root
+        stack = []
+        count = 0
+        while stack != [] or node is not None:
+            if node is not None:
+                stack.append(node)
+                node = node.left
+            else:
+                inorder_node = stack.pop()
+                count += 1
+                if count == k:
+                    return inorder_node.data
+                node = node.right
+        return None
+
+#Print a range of all values between k1 and k2
+def print_range(root, k1, k2):
+    if root is None:
+        return root
+    else:
+        if k1 < root.data:
+            print_range(root.left, k1, k2)
+        if k1 <= root.data and k2 >= root.data:
+            print root.data
+        if k2 > root.data:
+            print_range(root.right, k1, k2)
+
+
+#Find the height of BST
+def get_height(root):
+    if root is None:
+        return 0
+    else:
+        return 1 + max(get_height(root.left) , get_height(root.right))
 
 
 root = None
@@ -104,3 +143,6 @@ inorder(root)
 
 print 'Minimun value of the tree is'
 min_value(root)
+
+print 'Height of Tree is'
+print get_height(root)
