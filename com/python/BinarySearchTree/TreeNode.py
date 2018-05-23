@@ -42,6 +42,18 @@ def inorder(root):
         inorder(root.right)
     return result
 
+def preOrder(root):
+    if root is not None:
+        print root.data
+        preOrder(root.left)
+        preOrder(root.right)
+
+def postOder(root):
+    if root is not None:
+        postOder(root.left)
+        postOder(root.right)
+        print root.data
+
 #Method to find the minimum value of the Tree
 def min_value(root):
     if root is None:
@@ -138,11 +150,11 @@ root = insert(root, 70)
 root = insert(root, 60)
 root = insert(root, 80)
 
-print 'Inorder Traversal Result is:'
-inorder(root)
+print 'PreOder Traversal Result is:'
+preOrder(root)
 
-print 'Minimun value of the tree is'
-min_value(root)
+#print 'Minimun value of the tree is'
+#min_value(root)
 
-print 'Height of Tree is'
-print get_height(root)
+# print 'Height of Tree is'
+# print get_height(root)
