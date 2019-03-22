@@ -6,10 +6,9 @@ def findkoccurences(arr, n):
         else:
             map[i] = 1
 
-    for k,v in map.items():
-        if map[k] == 2:
+    for k,v in map.iteritems():
+        if map[k] == n:
             print k
-
 arr = [1,2,3,4,1,2]
 findkoccurences(arr,2)
 

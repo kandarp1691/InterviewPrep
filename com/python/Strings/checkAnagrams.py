@@ -8,8 +8,9 @@ def check_anagram(str1, str2):
     for j in str2:
         if j in dmap:
             dmap[j] = dmap[j]-1
-    for k in dmap:
+    #print dmap
+    for k,v in dmap.iteritems():
         if dmap[k] != 0:
-            print 'Not anagram'
+            print k
 
-check_anagram('geeks', 'geeks')
+check_anagram('geeks', 'geeks4')
