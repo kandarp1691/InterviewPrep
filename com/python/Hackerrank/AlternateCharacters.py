@@ -7,4 +7,4 @@ def alternate_characters(s):
         return 0
     return count
 
-print alternate_characters('BBBBB')
+print alternate_characters('ABCDAAAA')

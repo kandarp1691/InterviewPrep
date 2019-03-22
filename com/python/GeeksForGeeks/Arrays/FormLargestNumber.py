@@ -4,4 +4,4 @@ def form_largest_number(n1, n2):
     return cmp(int(v1), int(v2))
 
 a = [54, 548, 546, 90, 65]
-print sorted(a, cmp=form_largest_number)
+print ''.join(sorted(a, cmp=form_largest_number))
