@@ -14,4 +14,4 @@ def getMap(word):
             dict[i] = 1
     return dict
 
-print isAnagram('anagram', 'nagaram')
+print (isAnagram('anagram', 'nagaram'))
