@@ -62,35 +62,6 @@ def min_value(root):
         root = root.left
     print root.data
 
-def delete_node(root, key):
-    if root is None:
-        return None
-
-    #If val to be deleted is less than root its in left subtree
-    if key < root.data:
-        root.left = delete_node(root.left, key)
-
-    #If val to be deleted is greater than root, its in right subtree
-    elif key > root.data:
-        root.right = delete_node(root.right, key)
-    else:
-        if root.left is None:
-            temp = root.right
-            root = None
-            return temp
-        elif root.right is None:
-            temp = root.left
-            root = None
-            return temp
-
-        temp = min_value(root.right)
-
-        root.data = temp.data
-
-        root.right = delete_node(root.right, temp.key)
-
-    return root
-
 def find_lca(root, n1, n2):
     if root is None:
         return root
@@ -120,7 +91,38 @@ def kthsmallest(root, k):
                 node = node.right
         return None
 
-#Print a range of all values between k1 and k2
+
+def delete_node(root, key):
+    if root is None:
+        return None
+
+    #If val to be deleted is less than root its in left subtree
+    if key < root.data:
+        root.left = delete_node(root.left, key)
+
+    #If val to be deleted is greater than root, its in right subtree
+    elif key > root.data:
+        root.right = delete_node(root.right, key)
+    else:
+        if root.left is None:
+            temp = root.right
+            root = None
+            return temp
+        elif root.right is None:
+            temp = root.left
+            root = None
+            return temp
+
+        temp = min_value(root.right)
+
+        root.data = temp.data
+
+        root.right = delete_node(root.right, temp.key)
+
+    return root
+
+
+# Print a range of all values between k1 and k2
 def print_range(root, k1, k2):
     if root is None:
         return root
@@ -138,7 +140,7 @@ def get_height(root):
     if root is None:
         return 0
     else:
-        return 1 + max(get_height(root.left) , get_height(root.right))
+        return 1 + max(get_height(root.left), get_height(root.right))
 
 
 root = None
