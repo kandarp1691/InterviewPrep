@@ -142,19 +142,33 @@ def get_height(root):
     else:
         return 1 + max(get_height(root.left), get_height(root.right))
 
+def level_order_traversal(root):
+    if root is None:
+        return
+    q = []
+    q.append(root)
+    while len(q) is not 0:
+        r = q.pop(0)
+        print r.data
+        if r.left:
+            q.append(r.left)
+        if r.right:
+            q.append(r.right)
+
 
 root = None
-root = insert(root, 50)
-root = insert(root, 30)
-root = insert(root, 20)
-root = insert(root, 40)
-root = insert(root, 70)
-root = insert(root, 60)
-root = insert(root, 80)
+root = insert(root, 10)
+root = insert(root, 6)
+root = insert(root, 3)
+root = insert(root, 7)
+root = insert(root, 5)
+root = insert(root, 8)
+root = insert(root, 12)
+root = insert(root, 15)
 
 print 'PreOder Traversal Result is:'
-preOrder(root)
-
+# preOrder(root)
+level_order_traversal(root)
 #print 'Minimun value of the tree is'
 #min_value(root)
 
