@@ -156,21 +156,10 @@ def level_order_traversal(root):
             q.append(r.right)
 
 
+
 root = None
 root = insert(root, 10)
-root = insert(root, 6)
-root = insert(root, 3)
 root = insert(root, 7)
-root = insert(root, 5)
-root = insert(root, 8)
-root = insert(root, 12)
 root = insert(root, 15)
-
-print 'PreOder Traversal Result is:'
-# preOrder(root)
-level_order_traversal(root)
-#print 'Minimun value of the tree is'
-#min_value(root)
-
-# print 'Height of Tree is'
-# print get_height(root)
+root = insert(root, 12)
+root = insert(root, 27)
