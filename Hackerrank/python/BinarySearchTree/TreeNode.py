@@ -155,6 +155,13 @@ def level_order_traversal(root):
         if r.right:
             q.append(r.right)
 
+def get_height_node(root, node):
+    if root is None:
+        return 0
+    if root.data == node:
+        return 1
+    else:
+        return 1  + get_height_node(root.left, node)
 
 
 root = None
@@ -163,3 +170,5 @@ root = insert(root, 7)
 root = insert(root, 15)
 root = insert(root, 12)
 root = insert(root, 27)
+#print level_order_traversal(root)
+print get_height_node(root, 27)
