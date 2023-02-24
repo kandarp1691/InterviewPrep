@@ -1,6 +1,4 @@
 # Binary Search Alogorithm assuming the array is sorted
-
-
 def binary_search(key, arr, min, max):
     mid = int((max + min)/2)
 
@@ -16,4 +14,4 @@ def binary_search(key, arr, min, max):
 
 arr = [1,4,6,8,11,14,15,24]
 
-print binary_search(14, arr, 0, len(arr)-1)
+binary_search(14, arr, 0, len(arr)-1)

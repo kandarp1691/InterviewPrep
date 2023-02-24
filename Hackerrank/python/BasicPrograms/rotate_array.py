@@ -4,7 +4,7 @@ def rotate(arr, d):
     reverse(arr, 0, d-1)
     reverse(arr, d, len(arr)-1)
     reverse(arr, 0, len(arr)-1)
-    print arr
+    print(arr)
 
 def reverse(arr, start, end):
     while start < end :

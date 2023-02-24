@@ -10,4 +10,4 @@ def convert_string_to_integer(str):
 
     return sign*res
 
-print convert_string_to_integer('-123')
+print(convert_string_to_integer('-123'))
